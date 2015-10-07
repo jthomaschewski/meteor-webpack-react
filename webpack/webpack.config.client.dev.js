@@ -12,7 +12,7 @@ var config = module.exports = _.assign(_.clone(config), {
   output: _.assign(_.clone(config.output), {
     publicPath: devProps.baseUrl + '/assets/',
     pathinfo: true,
-    // crossOriginLoading is important since we are running 
+    // crossOriginLoading is important since we are running
     // webpack-dev-server from a different port than Meteor
     crossOriginLoading: 'anonymous',
   }),

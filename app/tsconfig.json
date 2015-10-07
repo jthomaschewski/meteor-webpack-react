@@ -1,0 +1,12 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "system",
+    "jsx": "preserve",
+    "sourceMap": true,
+
+    "experimentalDecorators": true,
+    "experimentalAsyncFunctions": true
+  }
+}

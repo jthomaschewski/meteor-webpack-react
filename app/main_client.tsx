@@ -1,5 +1,5 @@
-import React from 'react';
-import App from './components/App.jsx';
+import * as React from 'react';
+import App from './components/App';
 
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_ONLY',
@@ -8,5 +8,5 @@ Accounts.ui.config({
 console.log('Running on client only');
 
 Meteor.startup(() => {
-  React.render(<App/>, document.getElementById('root'));
+  React.render(<App />, document.getElementById('root'));
 });

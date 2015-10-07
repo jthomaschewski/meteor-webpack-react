@@ -6,7 +6,7 @@ module.exports = {
   entry: [
     './lib/core-js-no-number',
     'regenerator/runtime',
-    '../app/main_client',
+    '../app/main_client.tsx',
   ],
   output: {
     path: path.join(__dirname, 'assets'),
@@ -14,11 +14,16 @@ module.exports = {
     publicPath: '/assets/',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
     root: path.join(__dirname, '../app'),
   },
   module: {
     loaders: [
+      {
+        test: /\.tsx?$/,
+        loaders: ['babel', 'ts'],
+        exclude: /node_modules|lib/,
+      },
       {
         test: /\.jsx?$/,
         loader: 'babel',
