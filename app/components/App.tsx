@@ -5,29 +5,29 @@ import {Users, Posts} from '../collections/index';
 import './App.css';
 
 Meteor.call('sayHello', function(err, res) {
-    console.log(res);
+  console.log(res);
 });
 
 @reactMixin.decorate(ReactMeteorData)
 export default class App extends React.Component<any, any> {
-    data;
+  data;
 
-    getMeteorData() {
-        return {
-            users: Users.find().fetch(),
-        };
-    }
+  getMeteorData() {
+    return {
+      users: Users.find().fetch(),
+    };
+  }
 
-    render() {
-        let userCount = Users.find().fetch().length;
-        let postsCount = Posts.find().fetch().length;
-        return (
-            <div className="App">
-                <BlazeTemplate template={Template['loginButtons']} />
-                <h1>Hello Webpack!</h1>
-                <p>There are {userCount} users in the Minimongo  (login to change)</p>
-                <p>There are {postsCount} posts in the Minimongo  (autopublish removed)</p>
-            </div>
-        );
-    }
+  render() {
+    let userCount = Users.find().fetch().length;
+    let postsCount = Posts.find().fetch().length;
+    return (
+      <div className="App">
+        <BlazeTemplate template={Template['loginButtons']} />
+        <h1>Hello Webpack!</h1>
+        <p>There are {userCount} users in the Minimongo  (login to change)</p>
+        <p>There are {postsCount} posts in the Minimongo  (autopublish removed)</p>
+      </div>
+    );
+  }
 }

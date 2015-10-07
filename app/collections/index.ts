@@ -1,7 +1,6 @@
-/* global Mongo, Meteor */
 export interface IPosts {
-    name: string;
-    desc: string;
+  name: string;
+  desc: string;
 }
 
 export const Users = Meteor.users;
