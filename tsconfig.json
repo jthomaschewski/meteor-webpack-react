@@ -11,7 +11,7 @@
   "awesomeTypescriptLoaderOptions": {
     "doTypeCheck": true,
     "useBabel": false,
-    "emitRequireType": false,
+    "emitRequireType": true,
     "forkChecker": true
   }
 }

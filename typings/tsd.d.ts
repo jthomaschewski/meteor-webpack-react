@@ -5,4 +5,3 @@
 /// <reference path="react-mixin/react-mixin.d.ts" />
 
 /// <reference path="ReactMeteorData.d.ts" />
-/// <reference path="require.d.ts" />

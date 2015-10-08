@@ -4,6 +4,8 @@ import BlazeTemplate from './BlazeTemplate';
 import {Users, Posts} from '../collections/index';
 import './App.css';
 
+const Select = require('react-select');
+
 Meteor.call('sayHello', function(err, res) {
   console.log(res);
 });
