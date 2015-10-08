@@ -4,7 +4,6 @@
     "target": "ES6",
     "jsx": "react",
     "sourceMap": true,
-
     "experimentalDecorators": true,
     "experimentalAsyncFunctions": true
   },
@@ -13,5 +12,13 @@
     "useBabel": false,
     "emitRequireType": true,
     "forkChecker": true
-  }
+  },
+  "filesGlob": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "typings/**/*.ts",
+    "typings/**/*.tsx",
+    "!**/meteor_core/**/*.*",
+    "!**/node_modules/**/*.ts"
+  ]
 }

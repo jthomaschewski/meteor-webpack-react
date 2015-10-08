@@ -3,5 +3,5 @@
 /// <reference path="react/react.d.ts" />
 /// <reference path="lodash/lodash.d.ts" />
 /// <reference path="react-mixin/react-mixin.d.ts" />
-
+/// <reference path="require.d.ts"/>
 /// <reference path="ReactMeteorData.d.ts" />
