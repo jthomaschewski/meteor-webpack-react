@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var config = require('./webpack.config.client');
 var _ = require('lodash');
 var devProps = require('./devProps');
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 var config = module.exports = _.assign(_.clone(config), {
   devtool: 'eval',
@@ -19,6 +20,7 @@ var config = module.exports = _.assign(_.clone(config), {
   plugins: (config.plugins || []).concat([
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new ForkCheckerPlugin(),
   ]),
   devServer: {
     publicPath: devProps.baseUrl + '/assets/',

@@ -21,7 +21,7 @@ module.exports = {
     loaders: [
       {
         test: /\.tsx?$/,
-        loaders: ['babel', 'ts'],
+        loaders: ['babel', 'awesome-typescript'],
         exclude: /node_modules|lib/,
       },
       {

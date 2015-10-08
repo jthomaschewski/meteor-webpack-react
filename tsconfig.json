@@ -2,11 +2,16 @@
   "compileOnSave": false,
   "compilerOptions": {
     "target": "ES6",
-    "module": "system",
-    "jsx": "preserve",
+    "jsx": "react",
     "sourceMap": true,
 
     "experimentalDecorators": true,
     "experimentalAsyncFunctions": true
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "doTypeCheck": true,
+    "useBabel": false,
+    "emitRequireType": false,
+    "forkChecker": true
   }
 }

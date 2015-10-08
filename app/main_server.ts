@@ -1,3 +1,5 @@
+/// <reference path="../typings/tsd.d.ts" />
+
 import {Posts} from './collections/index';
 import {createPosts, createUsers} from './fixtures';
 // we don't call this so we're just importing to initialize file
