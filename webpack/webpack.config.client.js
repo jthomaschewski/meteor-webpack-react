@@ -1,16 +1,20 @@
 var path = require('path');
 var webpack = require('webpack');
+var SplitByPathPlugin = require('webpack-split-by-path');
 
 module.exports = {
   context: __dirname,
-  entry: [
-    './lib/core-js-no-number',
-    'regenerator/runtime',
-    '../app/main_client',
-  ],
+  entry: {
+    app: [
+      './lib/core-js-no-number',
+      'regenerator/runtime',
+      '../app/main_client',
+    ],
+  },
   output: {
     path: path.join(__dirname, 'assets'),
-    filename: 'client.bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     publicPath: '/assets/',
   },
   resolve: {
@@ -32,6 +36,13 @@ module.exports = {
   },
   plugins: [
     new webpack.PrefetchPlugin("react"),
-    new webpack.PrefetchPlugin("react/lib/ReactComponentBrowserEnvironment")
+    new webpack.PrefetchPlugin("react/lib/ReactComponentBrowserEnvironment"),
+    // split node_modules into separate bundle (vendor)
+    new SplitByPathPlugin([
+      {
+        name: 'vendor',
+        path: path.join(__dirname, '../node_modules'),
+      }
+    ]),
   ]
 };

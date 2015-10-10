@@ -30,7 +30,8 @@
     "source-map-support": "^0.3.2",
     "style-loader": "^0.12.3",
     "webpack": "^1.10.1",
-    "webpack-dev-server": "^1.10.1"
+    "webpack-dev-server": "^1.10.1",
+    "webpack-split-by-path": "0.0.6"
   },
   "dependencies": {
     "classnames": "^2.1.3",

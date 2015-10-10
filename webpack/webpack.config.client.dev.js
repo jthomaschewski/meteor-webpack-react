@@ -4,11 +4,12 @@ var _ = require('lodash');
 var devProps = require('./devProps');
 
 var config = module.exports = _.assign(_.clone(config), {
-  devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?' + devProps.baseUrl,
-    'webpack/hot/only-dev-server',
-  ].concat(config.entry),
+  entry: {
+    app: [
+      'webpack-dev-server/client?' + devProps.baseUrl,
+      'webpack/hot/only-dev-server',
+    ].concat(config.entry.app),
+  },
   output: _.assign(_.clone(config.output), {
     publicPath: devProps.baseUrl + '/assets/',
     pathinfo: true,
@@ -56,13 +57,21 @@ var config = module.exports = _.assign(_.clone(config), {
   plugins: (config.plugins || []).concat([
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    // disable build of source maps for node_modules (vendor)
+    new webpack.EvalSourceMapDevToolPlugin({
+      filename: '[file].map',
+      exclude: ['vendor.bundle.js'],
+    }),
   ]),
   devServer: {
     publicPath: devProps.baseUrl + '/assets/',
     host: devProps.host,
     hot: true,
     historyApiFallback: true,
-    contentBase: devProps.contentBase,
+    contentBase: devProps.baseUrl,
     port: devProps.webpackPort,
+    proxy: {
+      "*": devProps.contentBase
+    }
   }
 });
