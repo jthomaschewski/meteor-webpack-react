@@ -4,7 +4,6 @@ var _ = require('lodash');
 var devProps = require('./devProps');
 
 var config = module.exports = _.assign(_.clone(config), {
-  devTool: 'eval-cheap-module-source-map',
   entry: {
     client: [
       'webpack-dev-server/client?' + devProps.baseUrl,
@@ -37,12 +36,6 @@ var config = module.exports = _.assign(_.clone(config), {
                 imports: ['react'],
                 // this is important for Webpack HMR:
                 locals: ['module']
-              },
-              {
-                transform: 'react-transform-catch-errors',
-                // the second import is the React component to render error
-                // (it can be a local path too, like './src/ErrorReporter')
-                imports: ['react', 'redbox-react']
               }]
             }
           },
@@ -57,7 +50,6 @@ var config = module.exports = _.assign(_.clone(config), {
   },
   plugins: (config.plugins || []).concat([
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     // disable build of source maps for node_modules (vendor)
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
