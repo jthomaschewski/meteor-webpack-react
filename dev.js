@@ -28,7 +28,8 @@ serverConfig.plugins.push(new webpack.BannerPlugin(
 var serverBundlePath = path.join(dirs.assets, 'server.bundle.js');
 var serverBundleRequirePath = serverBundlePath.replace(/\\/g, '\\\\');
 var serverBundleLink = path.join(dirs.meteor, 'server/server.bundle.min.js');
-var clientBundleLink = path.join(dirs.meteor, 'client/client.bundle.min.js');
+var clientBundleLink = path.join(dirs.meteor, 'client/zclient.bundle.min.js');
+var vendorBundleLink = path.join(dirs.meteor, 'client/vendor.bundle.min.js');
 var loadClientBundleHtml = path.join(dirs.webpack, 'loadClientBundle.html');
 var loadClientBundleLink = path.join(dirs.meteor, 'client/loadClientBundle.html');
 
@@ -37,6 +38,7 @@ var requireServerBundleJs = path.join(dirs.meteor, 'server/require.server.bundle
 require('./core-js-custom-build');
 
 if (fs.existsSync(clientBundleLink)) rm(clientBundleLink);
+if (fs.existsSync(vendorBundleLink)) rm(vendorBundleLink);
 if (fs.existsSync(serverBundleLink)) rm(serverBundleLink);
 
 var serverCompiler = webpack(serverConfig);
@@ -52,7 +54,7 @@ serverCompiler.watch({
     serverBundleReady = true;
     compileClient();
     runMeteor();
-  }  
+  }
 });
 
 function compileClient() {

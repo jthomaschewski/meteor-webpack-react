@@ -16,16 +16,18 @@ addProgressPlugin(clientConfig);
 serverConfig.plugins.push(new webpack.BannerPlugin('var require = Npm.require;\n', {raw: true}));
 
 var serverBundlePath = path.join(dirs.assets, 'server.bundle.js');
+var vendorBundlePath = path.join(dirs.assets, 'vendor.bundle.js');
 var clientBundlePath = path.join(dirs.assets, 'client.bundle.js');
 var serverBundleLink = path.join(dirs.meteor, 'server/server.bundle.min.js');
-var clientBundleLink = path.join(dirs.meteor, 'client/client.bundle.min.js');
+var vendorBundleLink = path.join(dirs.meteor, 'client/vendor.bundle.min.js');
+var clientBundleLink = path.join(dirs.meteor, 'client/zclient.bundle.min.js');
 var loadClientBundleHtml = path.join(dirs.webpack, 'loadClientBundle.html');
 var loadClientBundleLink = path.join(dirs.meteor, 'client/loadClientBundle.html');
 var requireServerBundleJs = path.join(dirs.meteor, 'server/require.server.bundle.js');
 
-module.exports = function(callback) {
-  require('./core-js-custom-build');
+require('./core-js-custom-build');
 
+module.exports = function(callback) {
   if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = env.NODE_ENV = 'production';
   }
@@ -60,6 +62,7 @@ module.exports = function(callback) {
         return callback(new Error('Webpack reported compilation errors'));
       }
       ln('-sf', clientBundlePath, clientBundleLink);
+      ln('-sf', vendorBundlePath, vendorBundleLink);
       return callback();
     });
   }

@@ -6,10 +6,10 @@ var devProps = require('./devProps');
 var config = module.exports = _.assign(_.clone(config), {
   devTool: 'eval-cheap-module-source-map',
   entry: {
-    app: [
+    client: [
       'webpack-dev-server/client?' + devProps.baseUrl,
       'webpack/hot/only-dev-server',
-    ].concat(config.entry.app),
+    ].concat(config.entry.client),
   },
   output: _.assign(_.clone(config.output), {
     publicPath: devProps.baseUrl + '/assets/',
@@ -74,7 +74,7 @@ var config = module.exports = _.assign(_.clone(config), {
     contentBase: devProps.baseUrl,
     port: devProps.webpackPort,
     proxy: {
-      "*": devProps.contentBase
+      "*": devProps.contentBase,
     }
   }
 });

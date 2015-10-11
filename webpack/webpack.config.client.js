@@ -5,7 +5,7 @@ var SplitByPathPlugin = require('webpack-split-by-path');
 module.exports = {
   context: __dirname,
   entry: {
-    app: [
+    client: [
       './lib/core-js-no-number',
       'regenerator/runtime',
       '../app/main_client',
@@ -25,7 +25,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel',
+        loader: 'babel?stage=0',
         exclude: /node_modules|lib/,
       },
       {
