@@ -4,6 +4,7 @@ var _ = require('lodash');
 var devProps = require('./devProps');
 
 var config = module.exports = _.assign(_.clone(config), {
+  devTool: 'eval-cheap-module-source-map',
   entry: {
     app: [
       'webpack-dev-server/client?' + devProps.baseUrl,
@@ -58,9 +59,11 @@ var config = module.exports = _.assign(_.clone(config), {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     // disable build of source maps for node_modules (vendor)
-    new webpack.EvalSourceMapDevToolPlugin({
+    new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
       exclude: ['vendor.bundle.js'],
+      columns: false, // no columns in SourceMaps, faster
+      module: true // use SourceMaps from loaders
     }),
   ]),
   devServer: {
